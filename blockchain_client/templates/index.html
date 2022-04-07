@@ -9,6 +9,231 @@
     <script src="jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  font-size: 1.6rem;
+  overflow-x: hidden;
+}
+a {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: minmax(min-content, 100vh);
+  grid-template-columns: repeat(2, 50vw);
+}
+.heading-secondary {
+  font-size: 3rem;
+}
+.heading-primary {
+  font-size: 5rem;
+}
+.span-blue {
+  color: #2196f3;
+}
+.signup-container,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.signup-container {
+  width: 100vw;
+  padding: 10rem 10rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+.signup-form {
+  max-width: 45rem;
+  width: 100%;
+}
+.text-mute {
+  color: #aaa;
+}
+
+.input-text {
+  font-family: inherit;
+  font-size: 1.8rem;
+  padding: 3rem 5rem 1rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  background: #eee;
+  width: 100%;
+}
+.input-text:focus {
+  outline-color: #2196f3;
+}
+
+.btn {
+  padding: 1rem 3rem;
+  border: none;
+  background: #2196f3;
+  color: #fff;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: inherit;
+}
+.btn-login {
+  align-self: flex-end;
+  width: 100%;
+<!--  margin-top: 1rem;-->
+  box-shadow: 0 5px 5px #00000020;
+}
+.btn-login:active {
+  box-shadow: none;
+}
+.btn-login:hover {
+  background: #2180f9;
+}
+.inp {
+  position: relative;
+}
+.label {
+  pointer-events: none;
+
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: #00000070;
+  font-weight: 500;
+  font-size: 1.8rem;
+
+  transition: all 0.2s;
+  transform-origin: left;
+}
+.input-text:not(:placeholder-shown) + .label,
+.input-text:focus + .label {
+  top: 0.7rem;
+  transform: scale(0.75);
+}
+.input-text:focus + .label {
+  color: #2196f3;
+}
+
+.input-icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #00000070;
+}
+.input-icon-password {
+  cursor: pointer;
+}
+
+.btn-google {
+  color: #222;
+  background: #fff;
+  border: solid 1px #eee;
+  padding: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 1px 2px #00000020;
+}
+
+.btn-google img {
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.login-wrapper {
+  max-width: 45rem;
+  width: 100%;
+}
+.line-breaker .line {
+  width: 50%;
+  height: 1px;
+  background: #eee;
+}
+.line-breaker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+
+  margin: 3rem 0;
+}
+.line-breaker span:nth-child(2) {
+  margin: 0 2rem;
+}
+
+.welcome-container {
+  background: #eeeeee75;
+  grid-column: 2 / 3;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10rem;
+}
+.lg {
+  font-size: 6rem;
+}
+.welcome-container img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 54.5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .signup-container {
+    padding: 5rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 48.5%;
+  }
+
+  .input-text:not(:placeholder-shown) + .label,
+  .input-text:focus + .label {
+    top: 0.6rem;
+    transform: scale(0.75);
+  }
+  .label {
+    font-size: 1.9rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .signup-container {
+    grid-column: 1 / 3;
+    grid-row: 1/3;
+  }
+  .welcome-container {
+    display: none;
+  }
+}
+
+    </style>
     <title>Blockchain Frontend</title>
 </head>
 <body>
@@ -34,56 +259,118 @@
 </nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="card-body">
-                <h4 class="card-title">Wallet Generator</h4>
-                <p class="card-text">Click to generate blockchain wallet</p>
-                <input type="button" class="btn btn-primary" value="Generate">
-            </div>
-        </div>
+  <main class="signup-container">
+    <h1 class="heading-primary">Voter Portal<span class="span-blue">.</span></h1>
+    <p class="text-mute">Please enter your Voter ID to get your public and private key.</p>
+    <div class="login-wrapper">
+
     </div>
+
+    <form class="signup-form">
+        <label class="inp">
+        <input type="email" class="input-text" placeholder="&nbsp;">
+        <span class="label">VoterId</span>
+        <span class="input-icon"><i class="fa-solid fa-envelope"></i></span>
+      </label>
+<!--         <input type="button" class="btn btn-primary btn-lg" value="Generate Wallet">-->
+      <input type="button" class="btn btn-login"  value="Generate" id="generator"></input>
+        <span>Public Key:</span>
+      <textarea rows="5" id="public_key" class="form-control" readonly></textarea>
+        <button class="btn btn-login" onclick="publicCopyText()">Copy text</button>
+        <span>Private Key:</span>
+      <textarea id="private_key" rows="5" class="form-control" readonly></textarea>
+        <button class="btn btn-login" onclick="privateCopyText()">Copy text</button>
+
+    </form>
+  </main>
+  <div class="welcome-container">
+    <h1 class="heading-secondary">Welcome to <span class="lg">Blockchain Voting System</span></h1>
+    <img src="https://img.favpng.com/3/14/7/ballot-box-blob-emoji-election-png-favpng-131gCcHpmyUCCagqHfHwnqfVF.jpg" alt="">
+  </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <label class="col-sm-2">Public key</label>
-        <div class="col-sm-10">
-            <textarea id="public_key" rows="5" class="form-control" readonly></textarea>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <label class="col-sm-2">Private key</label>
-        <div class="col-sm-10">
-            <textarea id="private_key" rows="5" class="form-control" readonly></textarea>
-        </div>
-    </div>
-    <div class="row" id="warning">
-        <ul>
-            <li>Save your public and private keys. These keys cannot be recovered</li>
-            <li>Don't share your private key</li>
-        </ul>
-</div>
+<!-- ----------------- -->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-12 text-center">-->
+<!--            <div class="card-body">-->
+<!--                <h4 class="card-title">Wallet Generator</h4>-->
+<!--                <p class="card-text">Click to generate blockchain wallet</p>-->
+<!--                <input type="button" class="btn btn-primary" value="Generate" id="generator">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <label class="col-sm-2">Public key</label>-->
+<!--        <div class="col-sm-10">-->
+<!--            <textarea id="public_key" rows="5" class="form-control" readonly></textarea>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <br/>-->
+<!--    <div class="row">-->
+<!--        <label class="col-sm-2">Private key</label>-->
+<!--        <div class="col-sm-10">-->
+<!--            <textarea id="private_key" rows="5" class="form-control" readonly></textarea>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row" id="warning">-->
+<!--        <ul>-->
+<!--            <li>Save your public and private keys. These keys cannot be recovered</li>-->
+<!--            <li>Don't share your private key</li>-->
+<!--        </ul>-->
+<!--</div>-->
+<!--</div>-->
 <script>
-$(function(){
-    $('input').click(function(){
+<!--$(function(){-->
+<!--    $('input').click(function(){-->
+<!--        $.ajax({-->
+<!--            url: '/wallet/new',-->
+<!--            type: 'GET',-->
+
+<!--            success: function(response){-->
+<!--                console.log(response);-->
+<!--                document.getElementById("public_key").innerHTML= response['public_key'];-->
+<!--                document.getElementById("private_key").innerHTML= response['private_key'];-->
+<!--                document.getElementById("warning").style.display= "block"-->
+<!--            },-->
+<!--            error: function(error){-->
+<!--                console.log(error);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--});-->
+function displayMessage(){
     $.ajax({
-    url: '/wallet/new',
-    type: 'GET',
-    success: function(response){
-    console.log(response);
-    document.getElementById("public_key").innerHTML= response['public_key'];
-    document.getElementById("private_key").innerHTML= response['private_key'];
-    document.getElementById("warning").style.display= "block"
-    },
-    error: function(error){
-    console.log(error);
-    }
-    });
-    });
-});
+            url: '/wallet/new',
+            type: 'GET',
+
+            success: function(response){
+                console.log(response);
+                document.getElementById("public_key").innerHTML= response['public_key'];
+                document.getElementById("private_key").innerHTML= response['private_key'];
+                document.getElementById("warning").style.display= "block"
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+}
+var btn = document.getElementById("generator");
+btn.addEventListener("click", displayMessage);
+
+function publicCopyText(){
+    var text = document.getElementById("public_key");
+    text.select();
+    document.execCommand("copy");
+}
+function privateCopyText(){
+    var text = document.getElementById("private_key");
+    text.select();
+    document.execCommand("copy");
+}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
